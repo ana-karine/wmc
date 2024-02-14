@@ -12,7 +12,7 @@ query1 = '''
 CREATE TABLE alunos(id INT, nome VARCHAR(100), idade INT, curso VARCHAR(100));
 '''
 
-#dados = cursor.execute(query1)
+#cursor.execute(query1)
 
 
 '''
@@ -32,8 +32,32 @@ query2 = '''
 INSERT INTO alunos(id, nome, idade, curso) VALUES(?, ?, ?, ?);
 '''
 
-dados = cursor.executemany(query2, registros)
+#cursor.executemany(query2, registros)
   
+'''
+3. Consultas Básicas
+Escreva consultas SQL para realizar as seguintes tarefas:
+a) Selecionar todos os registros da tabela "alunos".
+b) Selecionar o nome e a idade dos alunos com mais de 20 anos.
+c) Selecionar os alunos do curso de "Engenharia" em ordem
+alfabética.
+d) Contar o número total de alunos na tabela
+'''  
+
+dados_a = cursor.execute('SELECT * FROM alunos;')
+print("Selecionar todos os registros da tabela 'alunos'\n")
+for dado in dados_a:
+    print(dado)
+
+dados_b = cursor.execute('\nSELECT nome, idade FROM alunos WHERE idade > 20;')
+print("Selecionar o nome e a idade dos alunos com mais de 20 anos\n")
+for dado in dados_b:
+    print(dado)
+
+dados_b = cursor.execute('\nSELECT nome, idade FROM alunos WHERE idade > 20;')
+print("Selecionar o nome e a idade dos alunos com mais de 20 anos\n")
+for dado in dados_b:
+    print(dado)
 
 conexao.commit()
 conexao.close
