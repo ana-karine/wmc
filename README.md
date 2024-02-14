@@ -3,6 +3,8 @@
 
 Projeto desenvolvido no curso Banco de Dados SQL - Bootcamp Data Analytics - [WoMakersCode](https://womakerscode.org/) | [Mais Mulheres em Tech](https://www.maismulheres.tech/)
 
+#### [Clique aqui](https://github.com/ana-karine/wmc/blob/main/Banco%20de%20Dados%20SQL/exercicios.py) para acessar a resolução
+
 ## Exercícios Banco de Dados
 
 1. Crie uma tabela chamada "alunos" com os seguintes campos: id (inteiro), nome (texto), idade (inteiro) e curso (texto).<br/>
