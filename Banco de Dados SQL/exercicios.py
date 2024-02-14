@@ -134,8 +134,54 @@ a) Atualize o saldo de um cliente específico.
 b) Remova um cliente pelo seu ID.
 '''
 
-cursor.execute('UPDATE clientes SET saldo=10000.99 WHERE nome="Lucia Pereira";')
-cursor.execute('DELETE FROM clientes WHERE id=5;')
+#cursor.execute('UPDATE clientes SET saldo=10000.99 WHERE nome="Lucia Pereira";')
+#cursor.execute('DELETE FROM clientes WHERE id=5;')
+
+'''
+8. Junção de Tabelas
+Crie uma segunda tabela chamada "compras" com os campos: id
+(chave primária), cliente_id (chave estrangeira referenciando o id
+da tabela "clientes"), produto (texto) e valor (real). Insira algumas
+compras associadas a clientes existentes na tabela "clientes".
+Escreva uma consulta para exibir o nome do cliente, o produto e o
+valor de cada compra.
+'''
+
+'''
+query_v3 = 
+    CREATE TABLE compras(
+    id INT PRIMARY KEY,
+    cliente_id INT,
+    produto VARCHAR(100),
+    valor REAL,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
+
+
+cursor.execute(query_v3)
+'''
+'''
+query_v4 = 
+INSERT INTO compras (id, cliente_id, produto, valor) VALUES
+    (1, 1, 'Produto A', 25.10),
+    (2, 2, 'Produto B', 150.50),
+    (3, 3, 'Produto C', 100.01),
+    (4, 3, 'Produto D', 1120.25);
+
+
+cursor.execute(query_v4)
+'''
+
+query_v5 = '''
+SELECT clientes.nome AS nome_cliente, compras.produto, compras.valor
+FROM compras
+JOIN clientes ON compras.cliente_id = clientes.id;
+'''
+
+dados_conculta = cursor.execute(query_v5)
+
+for dado in dados_conculta:
+    print(dado)
 
 conexao.commit()
 conexao.close
