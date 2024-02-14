@@ -95,7 +95,36 @@ query_v2 = '''
 INSERT INTO clientes(id, nome, idade, saldo) VALUES(?, ?, ?, ?);
 '''
 
-cursor.executemany(query_v2, registros_v2)
+#cursor.executemany(query_v2, registros_v2)
+
+'''
+6. Consultas e Funções Agregadas
+Escreva consultas SQL para realizar as seguintes tarefas:
+a) Selecione o nome e a idade dos clientes com idade superior a 30 anos.
+b) Calcule o saldo médio dos clientes.
+c) Encontre o cliente com o saldo máximo.
+d) Conte quantos clientes têm saldo acima de 1000.
+'''
+
+dados_a2 = cursor.execute('SELECT nome, idade FROM clientes WHERE idade > 30;')
+print("\nSelecione o nome e a idade dos clientes com idade superior a 30 anos:'\n")
+for dado in dados_a2:
+    print(dado)
+
+cursor.execute('SELECT AVG(saldo) FROM clientes;')
+saldo_medio = cursor.fetchone()[0]
+print("\nCalcule o saldo médio dos clientes:'\n")
+print(saldo_medio)
+
+dados_c2 = cursor.execute('SELECT * FROM clientes WHERE saldo = (SELECT MAX(saldo) FROM clientes);')
+print("\nEncontre o cliente com o saldo máximo:'\n")
+for dado in dados_c2:
+    print(dado)
+
+cursor.execute('SELECT COUNT(*) FROM clientes WHERE saldo > 1000;')
+total_saldo_maior_1000 = cursor.fetchone()[0]
+print("\nConte quantos clientes têm saldo acima de 1000:\n")
+print(total_saldo_maior_1000)
 
 conexao.commit()
 conexao.close
