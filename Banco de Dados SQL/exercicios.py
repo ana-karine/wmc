@@ -69,11 +69,33 @@ a) Atualize a idade de um aluno específico na tabela.
 b) Remova um aluno pelo seu ID.
 '''
 
-cursor.execute('UPDATE alunos SET idade=17 WHERE nome="Ana Moreira";')
+#cursor.execute('UPDATE alunos SET idade=17 WHERE nome="Ana Moreira";')
 
-cursor.execute('DELETE FROM alunos WHERE id=2;')
+#cursor.execute('DELETE FROM alunos WHERE id=2;')
 
+'''
+5. Criar uma Tabela e Inserir Dados
+Crie uma tabela chamada "clientes" com os campos: id (chave
+primária), nome (texto), idade (inteiro) e saldo (float). Insira alguns
+registros de clientes na tabela.
+'''
 
+#cursor.execute('CREATE TABLE clientes(id INT PRIMARY KEY, nome VARCHAR(100), idade INT, saldo FLOAT);')
+
+registros_v2 = [
+    (1, 'Ana Moreira', 30, 100.65),
+    (2, 'Maria Silva', 20, 2564.63),
+    (3, 'Lucia Pereira', 18, 10000.00),
+    (4, 'Carlos Silva', 45, 10.05),
+    (5, 'Maria Rodrigues', 58, 524.98),
+    (6, 'João Rodrigues', 65, 278.51)
+]
+
+query_v2 = '''
+INSERT INTO clientes(id, nome, idade, saldo) VALUES(?, ?, ?, ?);
+'''
+
+cursor.executemany(query_v2, registros_v2)
 
 conexao.commit()
 conexao.close
