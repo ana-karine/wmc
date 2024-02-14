@@ -41,6 +41,7 @@ alfabética.
 d) Contar o número total de alunos na tabela
 '''  
 
+'''
 dados_a = cursor.execute('SELECT * FROM alunos;')
 print("\nSelecionar todos os registros da tabela 'alunos:'\n")
 for dado in dados_a:
@@ -60,7 +61,17 @@ cursor.execute('SELECT COUNT(*) FROM alunos;')
 total_alunos = cursor.fetchone()[0]
 print("\nContar o número total de alunos na tabela:\n")
 print(total_alunos)
+'''
 
+'''
+4. Atualização e Remoção
+a) Atualize a idade de um aluno específico na tabela.
+b) Remova um aluno pelo seu ID.
+'''
+
+cursor.execute('UPDATE alunos SET idade=17 WHERE nome="Ana Moreira";')
+
+cursor.execute('DELETE FROM alunos WHERE id=2;')
 
 
 
