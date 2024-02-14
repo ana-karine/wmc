@@ -106,6 +106,7 @@ c) Encontre o cliente com o saldo máximo.
 d) Conte quantos clientes têm saldo acima de 1000.
 '''
 
+'''
 dados_a2 = cursor.execute('SELECT nome, idade FROM clientes WHERE idade > 30;')
 print("\nSelecione o nome e a idade dos clientes com idade superior a 30 anos:'\n")
 for dado in dados_a2:
@@ -125,6 +126,16 @@ cursor.execute('SELECT COUNT(*) FROM clientes WHERE saldo > 1000;')
 total_saldo_maior_1000 = cursor.fetchone()[0]
 print("\nConte quantos clientes têm saldo acima de 1000:\n")
 print(total_saldo_maior_1000)
+'''
+
+'''
+7. Atualização e Remoção com Condições
+a) Atualize o saldo de um cliente específico.
+b) Remova um cliente pelo seu ID.
+'''
+
+cursor.execute('UPDATE clientes SET saldo=10000.99 WHERE nome="Lucia Pereira";')
+cursor.execute('DELETE FROM clientes WHERE id=5;')
 
 conexao.commit()
 conexao.close
