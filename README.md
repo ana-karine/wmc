@@ -11,7 +11,6 @@ Projeto desenvolvido no curso Banco de Dados SQL - Bootcamp Data Analytics - [Wo
 
 3. Consultas Básicas<br/>
 Escreva consultas SQL para realizar as seguintes tarefas:<br/>
-
 a) Selecionar todos os registros da tabela "alunos".<br/>
 b) Selecionar o nome e a idade dos alunos com mais de 20 anos.<br/>
 c) Selecionar os alunos do curso de "Engenharia" em ordem alfabética.<br/>
